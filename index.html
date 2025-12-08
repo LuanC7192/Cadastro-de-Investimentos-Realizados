@@ -4,76 +4,87 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sistema de Investimentos</title>
-
-  <!-- Importar o CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
+
+  <!-- ================== TELA DE LOGIN ================== -->
+  <div id="login-screen" class="card" style="max-width:400px; margin:100px auto;">
+    <h2>Login</h2>
+
+    <label for="login-email">E-mail</label>
+    <input id="login-email" type="email" required>
+
+    <label for="login-senha">Senha</label>
+    <input id="login-senha" type="password" required>
+
+    <button id="btn-login">Entrar</button>
+  </div>
+
+  <!-- ================== SISTEMA (COMEÇA ESCONDIDO) ================== -->
+  <div id="sistema" style="display:none;">
+
     <header>
       <h1>Cadastro de Investimentos Realizados</h1>
-      <div class="muted">Registro de investimentos financeiros realizados pela empresa</div>
+      <p class="muted">Registro de investimentos financeiros realizados pela empresa</p>
+      <button id="btn-logout" class="ghost">Sair</button>
     </header>
 
-    <div class="grid">
-      <!-- Coluna esquerda: formulário -->
-      <div class="card">
-        <h3>Novo Investimento</h3>
-        <p class="muted">Preencha os campos e clique em "Adicionar". Os dados são salvos no navegador.</p>
+    <main>
+      <div class="container">
+        <div class="grid">
 
-        <form id="form-inv">
-          <label for="nome">Nome do investimento</label>
-          <input id="nome" type="text" placeholder="Ex: Fundo Alfa" required />
+          <!-- Seção do formulário -->
+          <section class="card">
+            <h3>Novo Investimento</h3>
 
-          <label for="montante">Montante aplicado (R$)</label>
-          <input id="montante" type="number" step="0.01" placeholder="10000.00" required />
+            <form id="form-inv">
+              <label for="nome">Nome do investimento</label>
+              <input id="nome" type="text" required>
 
-          <label for="retorno">Retorno esperado (R$)</label>
-          <input id="retorno" type="number" step="0.01" placeholder="11000.00" required />
+              <label for="montante">Montante aplicado (R$)</label>
+              <input id="montante" type="number" step="0.01" required>
 
-          <div style="display:flex; gap:8px; margin-top:10px">
-            <button id="btn-add" type="submit">Adicionar</button>
-            <button id="btn-clear" type="button" class="ghost">Limpar campos</button>
-          </div>
-        </form>
+              <label for="retorno">Retorno esperado (R$)</label>
+              <input id="retorno" type="number" step="0.01" required>
 
-        <div style="margin-top:18px">
-          <ul class="muted" style="padding-left:18px">
-          </ul>
+              <button type="submit">Adicionar</button>
+              <button type="button" id="btn-clear" class="ghost">Limpar</button>
+            </form>
+          </section>
+
+          <!-- Lista -->
+          <section class="card">
+            <h3>Investimentos</h3>
+            <div id="lista"></div>
+
+            <div class="totals">
+              <div class="tot-box">
+                <span class="muted">Total Investido</span>
+                <div id="total-investido">R$ 0,00</div>
+              </div>
+
+              <div class="tot-box">
+                <span class="muted">Retorno Esperado</span>
+                <div id="total-retorno">R$ 0,00</div>
+              </div>
+            </div>
+
+            <button id="btn-seed" class="ghost">Adicionar exemplos</button>
+            <button id="btn-clear-all" class="ghost">Apagar tudo</button>
+          </section>
+
         </div>
       </div>
+    </main>
 
-      <!-- Coluna direita: lista e totais -->
-      <div>
-        <div class="card">
-          <h3>Investimentos Cadastrados</h3>
-          <div id="lista"></div>
+    <footer>
+      Projeto Acadêmico - Luan Carlos Alves Fonteles Nogueira
+    </footer>
 
-          <div class="totals">
-            <div class="tot-box">
-              <div class="muted">Total Investido</div>
-              <div id="total-investido" style="font-weight:700; margin-top:6px">R$ 0,00</div>
-            </div>
-            <div class="tot-box">
-              <div class="muted">Retorno Esperado Total</div>
-              <div id="total-retorno" style="font-weight:700; margin-top:6px">R$ 0,00</div>
-            </div>
-          </div>
+  </div>
 
-          <div style="margin-top:12px; display:flex; gap:8px">
-            <button id="btn-seed" class="ghost" title="Adicionar exemplos">Adicionar exemplos</button>
-            <button id="btn-clear-all" class="ghost" title="Remover todos os investimentos">Apagar tudo</button>
-          </div>
-        </div>
-
-       <footer style="text-align:center; margin-top:25px; padding:10px; color:#666;">
-    Projeto Acadêmico - Luan Carlos Alves Fonteles Nogueira
-  </footer>
-
-  <!-- Importar o JavaScript -->
   <script src="script.js"></script>
-
 </body>
 </html>
-
-
