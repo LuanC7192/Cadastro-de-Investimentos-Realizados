@@ -1,3 +1,38 @@
+// ================== SISTEMA DE LOGIN ==================
+
+const loginScreen = document.getElementById('login-screen');
+const sistemaDiv = document.getElementById('sistema');
+
+const emailInput = document.getElementById('login-email');
+const senhaInput = document.getElementById('login-senha');
+
+const btnLogin = document.getElementById('btn-login');
+const btnLogout = document.getElementById('btn-logout');
+
+// Se já estiver logado, pula o login
+if (localStorage.getItem('usuario_logado')) {
+  loginScreen.style.display = 'none';
+  sistemaDiv.style.display = 'block';
+}
+
+// Evento de login
+btnLogin.addEventListener('click', () => {
+  if (emailInput.value && senhaInput.value) {
+    localStorage.setItem('usuario_logado', emailInput.value);
+    loginScreen.style.display = 'none';
+    sistemaDiv.style.display = 'block';
+  } else {
+    alert('Preencha e-mail e senha');
+  }
+});
+
+// Evento de logout
+btnLogout.addEventListener('click', () => {
+  localStorage.removeItem('usuario_logado');
+  location.reload();
+});
+
+
 // ======================================================
 //  CLASSES DO SISTEMA
 // ======================================================
