@@ -132,3 +132,8 @@ footer{
     grid-template-columns: 1fr;
   }
 }
+
+#login-screen input{
+  width:100%;
+  margin-bottom:10px;
+}
